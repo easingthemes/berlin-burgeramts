@@ -2,10 +2,9 @@
 const path = require('path');
 const express = require('express')
 const app = express()
-const port = 9000
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd() + '/public/index.html'));
-})
+const PORT = process.env.PORT || 5000
 
-app.listen(port, () => console.log(`Server started on port ${port}`))
+app.use(express.static(path.join(__dirname, '..', 'public')))
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
